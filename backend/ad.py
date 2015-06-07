@@ -20,7 +20,7 @@ class ad:
         if(ADConverter.useRealAD):
             return self.adcdac.read_adc_voltage(1)
         else:
-            return __readMeasurementFromFile()
+            return self.__readMeasurementFromFile()
     
     def __readMeasurementFromFile(self):
         return 0;
