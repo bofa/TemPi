@@ -7,7 +7,7 @@ Created on Jun 7, 2015
 from ABE_ADCDACPi import ADCDACPi
 from config import ADConverter
 
-class ad:
+class ADConverter:
     
     def __init__(self):
         if(ADConverter.useRealAD):
@@ -17,6 +17,9 @@ class ad:
             # open file for reading
     
     def getMeasurement(self):
+        """
+        Returns the latest voltage measurement
+        """
         if(ADConverter.useRealAD):
             return self.adcdac.read_adc_voltage(1)
         else:
