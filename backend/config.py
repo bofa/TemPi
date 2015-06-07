@@ -12,6 +12,6 @@ class FirebaseStrings:
     timeLeft = 'time_left'
     temperature = 'temperature'
     
-class ADConverter:
+class ADConverterSettings:
     useRealAD = False
         

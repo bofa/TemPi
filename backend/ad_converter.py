@@ -4,26 +4,35 @@ Created on Jun 7, 2015
 @author: tobimag
 '''
 
-from ABE_ADCDACPi import ADCDACPi
-from config import ADConverter
+#from ABE_ADCDACPi import ADCDACPi
+from config import ADConverterSettings
 
 class ADConverter:
     
     def __init__(self):
-        if(ADConverter.useRealAD):
-            self.adcdac = ADCDACPi()
-            self.adcdac.set_adc_refvoltage(3.3)
-        #else
-            # open file for reading
+        if(ADConverterSettings.useRealAD):
+            print "Real AD not activated"
+            #self.adcdac = ADCDACPi()
+            #self.adcdac.set_adc_refvoltage(3.3)
+        else:
+            self.file = open("offline_measurements.txt")
+            self.index = 0
+            self.measurements = []
+            for line in self.file:
+                self.measurements.append(line)
     
     def getMeasurement(self):
         """
         Returns the latest voltage measurement
         """
-        if(ADConverter.useRealAD):
-            return self.adcdac.read_adc_voltage(1)
+        if(ADConverterSettings.useRealAD):
+            print "Real AD not activated"
+            #return self.adcdac.read_adc_voltage(1)
         else:
             return self.__readMeasurementFromFile()
     
     def __readMeasurementFromFile(self):
-        return 0;
+        measurement = self.measurements[self.index]
+        self.index = self.index + 1
+        return measurement
+    
