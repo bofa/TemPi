@@ -11,10 +11,10 @@ class Test(unittest.TestCase):
 
 
     def testPutData(self):
-        server = Server()
+        server = Server(user='test')
         temp = 34.3
         timeLeft = 78.3
-        server.putData(temp, timeLeft)
+        server.putEstimationData(temp, timeLeft)
         pass
 
 

@@ -1,16 +1,23 @@
+'''
+Created on Jun 7, 2015
+
+@author: tobimag
+'''
+
 from firebase import firebase
 from datetime import datetime
+from config import FirebaseStrings
 
 class Server:
     
-    def __init__(self):
-        self.serverUrl = "https://shining-heat-5196.firebaseio.com"
-        self.user = "tobias"
-        self.latest_post = "latest_post"
-        self.firebase = firebase.FirebaseApplication(self.serverUrl);
+    def __init__(self, user=FirebaseStrings.user):
+        self.firebase = firebase.FirebaseApplication(FirebaseStrings.url)
+        self.user = user
     
-    def putData(self, currentTemp, estimatedTimeRemaining):
+    def putEstimationData(self, currentTemp, estimatedTimeRemaining):
         timestamp = str(datetime.now().time())
-        newData = {'time_stamp': timestamp, 'temp': currentTemp, 'time_left': estimatedTimeRemaining}
-        self.firebase.put(self.user, self.latest_post, newData)
+        newData = {FirebaseStrings.timeStamp: timestamp, 
+                   FirebaseStrings.temperature: currentTemp, 
+                   FirebaseStrings.timeLeft: estimatedTimeRemaining}
+        self.firebase.put(self.user, FirebaseStrings.latestPost, newData)
         
