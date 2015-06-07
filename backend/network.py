@@ -15,6 +15,9 @@ class Server:
         self.user = user
     
     def putEstimationData(self, currentTemp, estimatedTimeRemaining):
+        """
+        Writes the current temperature and estimated time remaining to the server.
+        """
         timestamp = str(datetime.now().time())
         newData = {FirebaseStrings.timeStamp: timestamp, 
                    FirebaseStrings.temperature: currentTemp, 
