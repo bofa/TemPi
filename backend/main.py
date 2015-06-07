@@ -1,6 +1,6 @@
 import ad
 import filter
-import network
+# import network
 
 from filter import MyClass
 
