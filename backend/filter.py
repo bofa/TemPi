@@ -1,5 +1,10 @@
 class MyClass:
     """A simple example class"""
-    i = 12345
+    def __init__(self, wordList=None, adjacencyList=None):
+        i = 12345
+        
     def f(self):
-        return 'hello world'
+        
+        i += 1
+        
+        return i
